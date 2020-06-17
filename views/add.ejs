@@ -13,10 +13,12 @@
         <% } %>
     </ol>
     <article>
+        <input type="week">
         <form action="/topic/add" method="POST">
-            <p><input type="text" name="title"></p>
-            <p><textarea type="text" name="description"></textarea></p>
-            <p><input type="text" name="author"></p>
+            
+            <p><input type="text" name="title" value="고정" placeholder="제목" ></p>
+            <p><textarea type="text" name="description" placeholder="내용입력"></textarea></p>
+            <p><input type="text" name="author" placeholder="글쓴이"></p>
             <p><input type="submit"></p>
         </form>
     </article>
