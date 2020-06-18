@@ -22,14 +22,19 @@
 </head>
 <body>
     <article>
-        <input type="week">
-        <form action="/topic/add" method="POST">
-            
-            <p><input type="text" name="title" value="고정" placeholder="제목" ></p>
-            <p><textarea type="text" name="description" placeholder="내용입력"></textarea></p>
-            <p><input type="text" name="author" placeholder="글쓴이"></p>
-            <p><input type="submit"></p>
+        
+        <form action="/topic/<%= topic.id %>/edit" method="POST" onsubmit="return confirm('수정하시겠습니까?')">
+            <div class="form-group">
+            <p><input  class="form-control" type="text" name="title" value="<%= topic.title %>" required></p>
+            <p><textarea  class="form-control" type="text" name="description" cols="100"><%= topic.description %></textarea></p>
+            <p><input  class="form-control" type="text" name="author" value="<%= topic.author %>" required></p>
+            <p><input  class="form-control btn-warning" type="submit" value="수정"></p>
+            </div>
         </form>
+        <form action="/topic/<%= topic.id %>">
+            <p><input  class="form-control btn-danger" type="submit" value="취소"></p>
+        </form>
+        <a href="/topic"><button type="button" class="btn btn-primary">홈으로</button></a>
     </article>
 </body>
 </html>
