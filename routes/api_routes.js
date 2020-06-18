@@ -44,7 +44,12 @@ var router = express.Router()
             // res.send("<h1>Sucess</h1>")
         })
     })
-router.get(['/topic','/topic/:id'], (req, res)=>{
+
+    router.get('/topic/edit',(req, res)=>{
+        res.render("edit")
+    })
+
+    router.get(['/topic','/topic/:id'], (req, res)=>{
     var sql = `SELECT * FROM topic`
     db.query(sql, (err, results)=>{
         var id = req.params.id
