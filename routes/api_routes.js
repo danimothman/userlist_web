@@ -44,6 +44,27 @@ var router = express.Router()
             // res.send("<h1>Sucess</h1>")
         })
     })
+router.get(['/topic','/topic/:id'], (req, res)=>{
+    var sql = `SELECT * FROM topic`
+    db.query(sql, (err, results)=>{
+        var id = req.params.id
 
+        if(id){
+            var sql = `SELECT * FROM topic WHERE id=${id}`
+            console.log(id)
+            db.query(sql,(err, result)=>{
+                if(err){
+                    console.log(err)
+                } 
 
+                console.log.topic
+                res.render('view',{topics:results,topic:result[0] })
+            })
+        } else {
+            res.render('view',{topics:results,topic:undefined })
+        }
+    })
+    // var sql = 'SELECT * FROM topic WHERE id=' + id
+    
+})
 module.exports = router;
