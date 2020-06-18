@@ -75,8 +75,42 @@ var router = express.Router()
             console.log(title,description,author)
             res.redirect(`/topic/${id}`)
         })
-        // res.sql(title)
+
     })
+
+
+router.get('/topic/delete/:delid',(req, res)=>{
+    var delid = req.params.delid
+    db.query(`SELECT * FROM topic WHERE id=${delid}`,(err, results)=>{
+
+        var titel = results[0].titel
+        var description = results[0].description
+        var author = results[0].author
+        // var datal = await setTimeout(()=>{console.log(description)},2000)
+        // console.log(datal)
+        // await console.log(titel)
+        // await console.log(description)
+        // await console.log(author)
+
+        var sql_l = `INSERT INTO daletelist (title, description, author) VELUES (${title},${description},${author})`
+        db.query(sql_l,(err, results)=>{
+            var sql =`DELETE FROM topic WHERE id=${delid}`
+            if(err){
+                console.log(err)
+            }
+            db.query(sql,(err, result)=>{
+                if(err){
+                    console.log(err)
+                }
+                console.log(result_1)
+                res.redirect('/topic')
+            })
+        })
+
+
+    })
+})
+
 
 
 
